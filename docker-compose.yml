@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  gem:
+    build:
+      context: .
+      target: dev
+    env_file:
+      - .env.dev
+    stdin_open: true
+    tty: true
+    command: ./bin/start_dev_server
+    volumes:
+      - ".:/molds"
+      - bundle:/bundle
+    ports:
+      - "3000:3000"
+volumes:
+  bundle:
